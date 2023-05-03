@@ -19,6 +19,21 @@ impl Camelot {
         });
     }
 
+    pub fn from_str(input: &str) -> Result<Self, String> {
+        let key_str: String = input.chars().filter(|char| char.is_ascii_digit()).collect();
+        let key = key_str
+            .parse::<u8>()
+            .map_err(|_| String::from("Invalid key."))?;
+
+        let mode_str: String = input
+            .chars()
+            .filter(|char| char.is_ascii_alphabetic())
+            .collect();
+        let mode = Mode::from_str(&mode_str)?;
+
+        Ok(Self::new(key, mode)?)
+    }
+
     // METHODS //
 
     fn get_compatible(&self) -> Vec<Camelot> {

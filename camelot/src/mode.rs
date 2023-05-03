@@ -4,6 +4,16 @@ pub enum Mode {
     B,
 }
 
+impl Mode {
+    pub fn from_str(input: &str) -> Result<Self, String> {
+        match input {
+            "a" | "A" => Ok(Self::A),
+            "b" | "B" => Ok(Self::B),
+            _ => Err(String::from("Invalid input.")),
+        }
+    }
+}
+
 impl std::ops::Not for Mode {
     type Output = Mode;
     fn not(self) -> Self {
