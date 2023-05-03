@@ -1,6 +1,6 @@
 use crate::mode::Mode;
 
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, Eq, PartialEq, PartialOrd)]
 pub struct Camelot {
     key: u8,
     mode: Mode,
@@ -50,14 +50,6 @@ impl Camelot {
         results.sort();
 
         return results;
-    }
-}
-
-impl Eq for Camelot {}
-
-impl PartialOrd for Camelot {
-    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        return Some(self.cmp(other));
     }
 }
 

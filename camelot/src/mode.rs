@@ -1,4 +1,4 @@
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, Eq, PartialEq, PartialOrd)]
 pub enum Mode {
     A,
     B,
